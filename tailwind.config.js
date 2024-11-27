@@ -7,7 +7,8 @@ module.exports = {
         'bkg-primary': '#161616',
         'bkg-mid': '#0F0F0F',
         'bkg-light': '#242424',
-        'bkg-hover': '#2E2E2E', // Hover y borders
+        'bkg-hover': '#2E2E2E',
+        'bkg-red': '#E05A43',
         'border': '#292929',
         'light-border': "#3B3B3B",
         'blue-primary': '#78A7FF',

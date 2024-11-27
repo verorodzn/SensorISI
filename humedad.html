@@ -33,11 +33,25 @@
           </p>
         </div>
         <div class="flex space-x-4">
-          <a href="#">Inicio</a>
-          <a href="humedad.html">Humedad</a>
+          <a href="index.html">Inicio</a>
+          <a href="humedad.html" class="underline underline-offset-8">Humedad</a>
           <a href="temperatura.html">Temperatura</a>
         </div>
       </header>
+
+      <!-- Banner -->
+      <div class="bg-bkg-light p-4 mt-6 mb-0 mx-6 rounded-xl justify-between border-l-4 border-bkg-red flex" id="banner">
+        <div class="flex items-center space-x-4">
+          <i class="fa-solid fa-circle-exclamation text-bkg-red text-2xl"></i>
+          <div>
+            <h2 class="text-bkg-red text-lg font-semibold">Alerta</h2>
+            <p>Hay un objeto muy cerca.</p>
+          </div>
+        </div>
+        <button class="p-2" id="close_banner">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
 
       <!-- Título centrado de la página -->
       <div class="p-6 relative flex flex-row items-center justify-between">
@@ -72,8 +86,8 @@
       <div class="p-6 grid grid-cols-2 md:grid-cols-4 gap-4 pt-8" id="KPIs">
         <!-- KPI Temp Máx-->
         <div class="flex bg-bkg-light border-2 border-border rounded-xl flex-row gap-4 items-center p-3">
-          <div class="bg-orange-primary rounded-full py-2 px-3 text-bkg-primary">
-            <i class="fa-regular fa-temperature-sun"></i>
+          <div class="bg-orange-primary rounded-full py-2 px-4 text-bkg-primary">
+            <i class="fa-regular fa-droplet-percent"></i>
           </div>
           <p>Humedad Máx:</p>
           <p>40%</p>
@@ -81,8 +95,8 @@
 
         <!-- KPI Temp Min-->
         <div class="flex bg-bkg-light border-2 border-border rounded-xl flex-row gap-4 items-center p-3">
-          <div class="bg-blue-primary rounded-full py-2 px-3 text-bkg-primary">
-            <i class="fa-solid fa-temperature-snow"></i>
+          <div class="bg-blue-primary rounded-full py-2 px-4 text-bkg-primary">
+            <i class="fa-sharp fa-regular fa-droplet"></i>
           </div>
           <p>Humedad Mín:</p>
           <p>20 %</p>
@@ -90,8 +104,8 @@
 
         <!-- KPI Temp Promedio-->
         <div class="flex bg-bkg-light border-2 border-border rounded-xl flex-row gap-4 items-center p-3">
-          <div class="bg-pink-primary rounded-full py-2 px-3 text-bkg-primary">
-            <i class="fa-solid fa-temperature-list"></i>
+          <div class="bg-pink-primary rounded-full py-2 px-4 text-bkg-primary">
+            <i class="fa-sharp fa-regular fa-badge-percent"></i>
           </div>
           <p>Humedad Promedio:</p>
           <p>35%</p>
@@ -99,7 +113,7 @@
 
         <!-- KPI Desviación Estándar-->
         <div class="flex bg-bkg-light border-2 border-border rounded-xl flex-row gap-4 items-center p-3">
-          <div class="bg-yellow-primary rounded-full py-2 px-3 text-bkg-primary">
+          <div class="bg-yellow-primary rounded-full py-2 px-4 text-bkg-primary">
             <i class="fa-regular fa-calculator"></i>
           </div>
           <p>Desviación Estándar:</p>
@@ -167,30 +181,6 @@
             </div>
           </div>
         </div>
-        <!-- 
-        <table class="text-center border border-light-border overflow-hidden">
-            <thead class="border border-light-border">
-                <tr>
-                    <th class="">
-                        Timestamp
-                    </th>
-                    <th class="">
-                        Humedad
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="">
-                        26/11/2024 12:00:00
-                    </td>
-                    <td class="">
-                      8%
-                  </td>
-              </tr>
-          </tbody>
-        </table>
-        -->
 
         <!-- Gráfica -->
         <div class="bg-bkg-light rounded-2xl"></div>
@@ -202,6 +192,8 @@
         const date = document.getElementById("date");
         const filter_button = document.getElementById("filter_button");
         const KPIs = document.getElementById("KPIs");
+        const banner = document.getElementById("banner");
+        const close_banner = document.getElementById("close_banner");
 
         function toggle() {
           if (filters.classList.contains("hidden")) {
@@ -217,7 +209,13 @@
           }
         }
 
+        function remove_banner() {
+          banner.classList.remove("flex");
+          banner.classList.add("hidden");
+        }
+
         filter_button.addEventListener("click", toggle);
+        close_banner.addEventListener("click", remove_banner);
       </script>
     </footer>
 </body>

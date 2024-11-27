@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Carga el archivo de estilos Tailwind para el diseño atractivo y responsivo -->
+    <link href="./output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://kit.fontawesome.com/ec46b80c81.css" crossorigin="anonymous" />
+
+    <!-- Carga la fuente de texto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Carga Chart.js para graficar los datos de humedad y temperatura en tiempo real -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8" />
+    <title>Monitoreo en Tiempo Real</title>
+</head>
+
+<!-- Agregamos padding al body y declaramos la fuente del texto -->
+
+<body class="bg-bkg-primary text-white h-fit" style="font-family: Poppins">
+    <!-- Contenedor principal de la página con diseño centrado -->
+    <div class="items-center h-full">
+        <div class="items-center h-full">
+            <header class="p-6 flex space-x-2 items-center w-full justify-between bg-bkg-mid">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-cloud text-xl"></i>
+                    <p style="font-family: Quicksand" class="font-semibold text-xl">
+                        SensorISI
+                    </p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="index.html" class="underline underline-offset-8">Inicio</a>
+                    <a href="humedad.html">Humedad</a>
+                    <a href="temperatura.html">Temperatura</a>
+                </div>
+            </header>
+
+            <!-- Banner -->
+            <div class="bg-bkg-light p-4 mt-6 mb-0 mx-6 rounded-xl justify-between border-l-4 border-bkg-red flex"
+                id="banner">
+                <div class="flex items-center space-x-4">
+                    <i class="fa-solid fa-circle-exclamation text-bkg-red text-2xl"></i>
+                    <div>
+                        <h2 class="text-bkg-red text-lg font-semibold">Alerta</h2>
+                        <p>Hay un objeto muy cerca.</p>
+                    </div>
+                </div>
+                <button class="p-2" id="close_banner">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Título centrado de la página -->
+
+            <div class="p-6 items-center justify-between">
+                <h1 class="py-2 font-semibold text-3xl">Monitoreo en Tiempo Real</h1>
+                <p class="text-light">Monitorea la temperatura y la humedad en tiempo real</p>
+            </div>
+
+            <!-- Contenedor de tabla y gráfica -->
+            <div class="p-6 grid grid-cols-1 md:grid-cols-2 h-full gap-8">
+                <!-- Gráfica Temperatura -->
+                <div class="bg-bkg-light rounded-2xl p-4">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-lg font-semibold">Temperatura</h2>
+                        <a href="temperatura.html">
+                            <button
+                                class="bg-bkg-primary py-2 px-4 border-2 border-light-border rounded-xl w-fit h-fit">
+                                <span>Ver más</span>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Gráfica Humedad -->
+                <div class="bg-bkg-light rounded-2xl">
+                    <!-- Título y botón ver más -->
+                    <div class="flex items-center justify-between p-4">
+                        <h2 class="text-lg font-semibold">Humedad</h2>
+                        <a href="humedad.html">
+                            <button
+                                class="bg-bkg-primary py-2 px-4 border-2 border-light-border rounded-xl w-fit h-fit">
+                                <span>Ver más</span>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <script>
+                const banner = document.getElementById("banner");
+                const close_banner = document.getElementById("close_banner");
+
+                function remove_banner() {
+                    banner.classList.remove("flex");
+                    banner.classList.add("hidden");
+                }
+
+                close_banner.addEventListener("click", remove_banner);
+            </script>
+        </footer>
+</body>
+
+</html>
